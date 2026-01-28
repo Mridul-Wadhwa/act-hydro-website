@@ -1691,7 +1691,7 @@ button,
 .teamcard-container {
   justify-content: space-evenly;}
 .team-img-wrapper {
-  border-radius: 1rem;
+  border-radius: 1rem 1rem 0 0;
   overflow: hidden;
 }
 .team-img {
@@ -1707,6 +1707,73 @@ button,
   }
   .team-img {
     width: 100%;}
+}
+
+/* Note: grayscale effect removed per user request */
+
+/* Enhanced card interactions: subtle lift, image scale, overlay reveal */
+.team-card {
+  display: block;
+  position: relative;
+  border-radius: 1rem 1rem 0 0;
+  overflow: hidden;
+  background: #fff;
+  transition: transform .28s cubic-bezier(.2,.8,.2,1), box-shadow .28s ease;
+}
+
+.team-card .team-img-wrapper {
+  display: block;
+  overflow: hidden;
+}
+
+.team-card .team-img {
+  display: block;
+  width: 100%;
+  height: auto;
+  transition: transform .45s cubic-bezier(.2,.8,.2,1);
+  transform-origin: center center;
+}
+
+.team-card:hover,
+.team-card:focus-within {
+  transform: translateY(-6px);
+  box-shadow: 0 10px 30px rgba(23,35,55,0.12);
+}
+
+.team-card:hover .team-img,
+.team-card:focus-within .team-img {
+  transform: scale(1.06);
+}
+
+.team-card .team-card-content {
+  /* Default: static content below the image (for individual member pages)
+     This ensures member pages display the content below the headshot.
+  */
+  position: static;
+  padding: 8px 0 0;
+  background: transparent;
+  color: #111;
+  transform: none;
+  opacity: 1;
+}
+
+/* For listing pages (index & people) show card content below the image
+   so all cards consistently show name/position beneath the headshot. */
+.teamcard-container .team-card .team-card-content,
+.responsive-container-block .team-card .team-card-content {
+  position: static;
+  padding: 8px 0 0;
+  background: transparent;
+  color: #111;
+  transform: none;
+  opacity: 1;
+}
+
+.teamcard-container .team-card .name a,
+.teamcard-container .team-card .position,
+.responsive-container-block .team-card .name a,
+.responsive-container-block .team-card .position {
+  color: #111;
 }
 
 /* Maps */
